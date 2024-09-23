@@ -4,6 +4,7 @@ import {
     requireNativeComponent,
     UIManager,
     ViewStyle,
+    NativeModules,
 } from 'react-native';
 
 type CommonChartProps = {
@@ -50,6 +51,8 @@ type RNChartsProps = CommonChartProps & {
 
 const ComponentName = 'ChartsView';
 
+const ChartsModule = NativeModules.ChartsModule;
+
 export const selectValue = (
     componentOrHandle:
         | null
@@ -66,6 +69,20 @@ export const selectValue = (
     );
 };
 
+
+export const enableRotation = (enable: boolean) => {
+    if (ChartsModule?.enableRotation) {
+        ChartsModule.enableRotation(enable);
+    }
+};
+
+export const isRotationEnabled = async () => {
+    if (ChartsModule?.isRotationEnabled) {
+        return ChartsModule.isRotationEnabled();
+    }
+};
+
+
 export const NativeChartsView =
     UIManager.getViewManagerConfig(ComponentName) != null
         ? requireNativeComponent<NativeChartsProps>(ComponentName)
@@ -79,7 +96,6 @@ export const ChartsView = forwardRef<typeof NativeChartsView, RNChartsProps>(
             ref={ref}
             datasets={props.datasets}
             style={props.style}
-            RNRotationEnabled={props.rotationEnabled}
             RNLegendEnabled={props.legendEnabled}
             RNWebLineWidth={props.webLineWidth}
             RNInnerWebLineWidth={props.innerWebLineWidth}

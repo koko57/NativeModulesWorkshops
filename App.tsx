@@ -18,7 +18,12 @@ import {
 } from 'react-native';
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
-import {ChartsView, selectValue} from "./src/components/ChartsView";
+import {
+    ChartsView,
+    selectValue,
+    enableRotation,
+    isRotationEnabled,
+} from "./src/components/ChartsView";
 
 
 const datasets = [
@@ -55,41 +60,58 @@ function App(): React.JSX.Element {
                 barStyle={isDarkMode ? 'light-content' : 'dark-content'}
                 backgroundColor={backgroundStyle.backgroundColor}
             />
-            <ScrollView
-                contentInsetAdjustmentBehavior="automatic"
-                style={backgroundStyle}>
-                <View
-                    style={{
-                        backgroundColor: isDarkMode ? Colors.black : Colors.white,
+            <View
+                style={{
+                    backgroundColor: isDarkMode ? Colors.black : Colors.white,
+                    paddingTop: 10,
+                }}>
+                <ChartsView
+                    ref={chartRef}
+                    style={styles.chart}
+                    datasets={datasets}
+                    legendEnabled={false}
+                    webLineWidth={1}
+                    innerWebLineWidth={1}
+                    webColor={'#FF0000'}
+                    innerWebColor={'#0000FF'}
+                    onValueSelected={event => {
+                        console.log('Value Selected Event', event.nativeEvent);
+                    }}
+                />
+                <TouchableOpacity
+                    onPress={() => {
+                        selectValue(chartRef.current, 0, 3);
                     }}>
-                    <ChartsView
-                        ref={chartRef}
-                        style={styles.chart}
-                        datasets={datasets}
-                        rotationEnabled={true}
-                        legendEnabled={false}
-                        webLineWidth={1}
-                        innerWebLineWidth={1}
-                        webColor={'#FF0000'}
-                        innerWebColor={'#0000FF'}
-                        onValueSelected={event => {
-                            console.log('Value Selected Event', event.nativeEvent);
-                        }}
-                    />
-                    <TouchableOpacity
-                        onPress={() => {
-                            selectValue(chartRef.current, 0, 3);
-                        }}>
-                        <Text>Select Red index 3</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity
-                        onPress={() => {
-                            selectValue(chartRef.current, 1, 6);
-                        }}>
-                        <Text>Select Green index 6</Text>
-                    </TouchableOpacity>
-                </View>
-            </ScrollView>
+                    <Text>Select Red index 3</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                    onPress={() => {
+                        selectValue(chartRef.current, 1, 6);
+                    }}>
+                    <Text>Select Green index 6</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                    onPress={() => {
+                        enableRotation(true);
+                    }}>
+                    <Text>Enable global rotation</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                    onPress={() => {
+                        enableRotation(false);
+                    }}>
+                    <Text>Disable global rotation</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                    onPress={async () => {
+                        const rotationEnabled = await isRotationEnabled();
+                        console.log(
+                            `Rotation in the ChartsModule is set to: ${rotationEnabled}`,
+                        );
+                    }}>
+                    <Text>isGlobalRotationEnabled</Text>
+                </TouchableOpacity>
+            </View>
         </SafeAreaView>
     );
 }

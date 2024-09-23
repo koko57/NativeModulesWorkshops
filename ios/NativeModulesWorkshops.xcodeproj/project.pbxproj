@@ -15,6 +15,8 @@
 		3CEA9CDDB639D5499DAAA7FF /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 680D3BB503E88F5507D258BB /* PrivacyInfo.xcprivacy */; };
 		7699B88040F8A987B510C191 /* libPods-NativeModulesWorkshops-NativeModulesWorkshopsTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-NativeModulesWorkshops-NativeModulesWorkshopsTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		C32285632CA11CE100B560F7 /* ChartsModule.m in Sources */ = {isa = PBXBuildFile; fileRef = C32285622CA11CE100B560F7 /* ChartsModule.m */; };
+		C32285652CA11D2400B560F7 /* ChartsModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32285642CA11D2400B560F7 /* ChartsModule.swift */; };
 		C3A592732C9A87F4005B6AD2 /* ChartsViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A592722C9A87F4005B6AD2 /* ChartsViewManager.swift */; };
 		C3A592752C9A8CA0005B6AD2 /* ChartsViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C3A592742C9A8CA0005B6AD2 /* ChartsViewManager.m */; };
 /* End PBXBuildFile section */
@@ -48,6 +50,8 @@
 		680D3BB503E88F5507D258BB /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = NativeModulesWorkshops/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = NativeModulesWorkshops/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-NativeModulesWorkshops-NativeModulesWorkshopsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NativeModulesWorkshops-NativeModulesWorkshopsTests.release.xcconfig"; path = "Target Support Files/Pods-NativeModulesWorkshops-NativeModulesWorkshopsTests/Pods-NativeModulesWorkshops-NativeModulesWorkshopsTests.release.xcconfig"; sourceTree = "<group>"; };
+		C32285622CA11CE100B560F7 /* ChartsModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ChartsModule.m; path = NativeModulesWorkshops/ChartsModule/ChartsModule.m; sourceTree = "<group>"; };
+		C32285642CA11D2400B560F7 /* ChartsModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChartsModule.swift; path = NativeModulesWorkshops/ChartsModule/ChartsModule.swift; sourceTree = "<group>"; };
 		C3A592712C9A87F4005B6AD2 /* NativeModulesWorkshops-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NativeModulesWorkshops-Bridging-Header.h"; sourceTree = "<group>"; };
 		C3A592722C9A87F4005B6AD2 /* ChartsViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChartsViewManager.swift; path = NativeModulesWorkshops/ChartsViewManager/ChartsViewManager.swift; sourceTree = "<group>"; };
 		C3A592742C9A8CA0005B6AD2 /* ChartsViewManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ChartsViewManager.m; path = NativeModulesWorkshops/ChartsViewManager/ChartsViewManager.m; sourceTree = "<group>"; };
@@ -95,6 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
+				C32285622CA11CE100B560F7 /* ChartsModule.m */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
@@ -102,6 +107,7 @@
 				13B07FB71A68108700A75B9A /* main.m */,
 				13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */,
 				680D3BB503E88F5507D258BB /* PrivacyInfo.xcprivacy */,
+				C32285642CA11D2400B560F7 /* ChartsModule.swift */,
 			);
 			name = NativeModulesWorkshops;
 			sourceTree = "<group>";
@@ -406,9 +412,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C32285632CA11CE100B560F7 /* ChartsModule.m in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */,
 				C3A592752C9A8CA0005B6AD2 /* ChartsViewManager.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
+				C32285652CA11D2400B560F7 /* ChartsModule.swift in Sources */,
 				C3A592732C9A87F4005B6AD2 /* ChartsViewManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

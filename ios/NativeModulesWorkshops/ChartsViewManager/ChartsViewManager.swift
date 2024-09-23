@@ -1,5 +1,7 @@
 import Charts
 
+let enableRotationNotification = "ChartsEnableRotation"
+
 @objc(ChartsViewManager)
 class ChartsViewManager: RCTViewManager {
   @objc func selectValue(_ reactTag: NSNumber, datasetIndex: NSNumber, x: NSNumber) {
@@ -36,11 +38,24 @@ class ChartsView : RadarChartView {
 
   init() {
     super.init(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+    NotificationCenter.default.addObserver(self, selector: #selector(enableRotation), name: Notification.Name(enableRotationNotification), object: nil)
     self.delegate = self
   }
 
   required init?(coder: NSCoder) {
     super.init(coder: coder)
+  }
+  
+  
+  override func removeFromSuperview() {
+    super.removeFromSuperview()
+    NotificationCenter.default.removeObserver(self)
+  }
+
+  @objc func enableRotation(_ notification: Notification){
+    if let enable = notification.object as? Bool {
+      rotationEnabled = enable
+    }
   }
 
   @objc var onValueSelected: RCTBubblingEventBlock?
@@ -56,16 +71,6 @@ class ChartsView : RadarChartView {
     didSet {
       innerWebColor = hexStringToUIColor(hexColor: RNInnerWebColor)
       setNeedsDisplay()
-    }
-  }
-
-  @objc var RNRotationEnabled: NSNumber = 0 {
-    didSet {
-      if(RNRotationEnabled.boolValue){
-        rotationEnabled = true
-      } else {
-        rotationEnabled = false
-      }
     }
   }
 
